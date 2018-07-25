@@ -16,14 +16,16 @@
       <h1 class="mt-5 mb-4">Livros</h1>
     
 
-	
-		<table class="table table-hover">
+		<!-- class="table-carrinho" somente para text-align -->
+		<table class="table table-hover table-carrinho">
 			<thead class="thead-dark">
 				<tr>
 					<th>Código</th>
 					<th>Título</th>
 					<th>Data Publicação</th>
 					<th>Autor</th>
+					<th>Preço PT</th>
+					<th>Preço EN</th>
 					<th></th>
 					<th></th>
 				</tr>
@@ -34,6 +36,9 @@
 					<td><a href="${s:mvcUrl('LC#detalhesAdmin').arg(0, livro.codigo).build() }">${livro.titulo}</a></td>
 					<td>${livro.dataPublicacao}</td> 
 					<td>${livro.autor}</td>
+					<c:forEach items="${livro.preco}" var="preco">
+						<td>${preco.valor}</td>
+					</c:forEach>
 					<td>
 						<form:form action="${s:mvcUrl('LC#editar').arg(0, livro.codigo).build() }" method="post">
 							<input type="image" src="${imagesPath}/editar.png" alt="Editar" title="Editar">

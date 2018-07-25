@@ -23,7 +23,7 @@ public class LivroDAO {
 	}
 	
 	public List<Livro> listar(){
-		return em.createQuery("from Livro", Livro.class).getResultList();
+		return em.createQuery("select distinct(l) from Livro l join fetch l.paginas join fetch l.preco", Livro.class).getResultList();
 	}
 	
 	public Livro buscar(Integer livroCodigo) {
