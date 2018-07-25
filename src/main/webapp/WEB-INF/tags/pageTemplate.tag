@@ -25,11 +25,12 @@
 
     <!-- Custom styles for this template -->
     <link href="${cssPath}/logo-nav.css" rel="stylesheet">
-    
     <link href="${cssPath}/sticky-footer.css" rel="stylesheet">
+    <link href="${cssPath}/table-carrinho-itens.css" rel="stylesheet">
 	
 	<script src="${jsPath}/jquery-3.3.1.min.js"></script>
 	<script src="${jsPath}/bootstrap.bundle.min.js"></script>
+	<script src="${jsPath}/detalhes-radio-checked.js"></script>
 	
 </head>
 

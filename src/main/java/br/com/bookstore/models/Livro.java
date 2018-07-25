@@ -1,5 +1,6 @@
 package br.com.bookstore.models;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OrderColumn;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -16,7 +18,8 @@ import javax.validation.constraints.NotNull;
 public class Livro {
 
 	@Id
-	@NotNull(message="'Código' é obrigatório")
+	@Min(value=3, message="'Código' deve conter pelo menos 3 números")
+	@NotNull
 	private Integer codigo;
 	
 	@NotBlank(message="'Título' é obrigatório")
@@ -96,7 +99,7 @@ public class Livro {
 	public void setPreco(List<Preco> preco) {
 		this.preco = preco;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -122,6 +125,9 @@ public class Livro {
 		return true;
 	}
 	
-	
+	public BigDecimal precoPara(Idioma idioma) {
+		return preco.stream().filter(preco -> preco.getIdioma().equals(idioma))
+				.findFirst().get().getValor();
+	}
 	
 }

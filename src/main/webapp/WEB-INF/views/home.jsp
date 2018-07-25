@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %> 
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tags" %>
 	
@@ -49,10 +50,10 @@
 
 		            <div class="col-lg-3 col-md-6 mb-4">
 		              <div class="card h-100">
-		                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+		                <a href="${s:mvcUrl('LC#detalhes').arg(0, livro.codigo).build()}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
 		                <div class="card-body">
 		                  <h4 class="card-title"> 
-		                    <a href="#">${livro.titulo}</a>
+		                    <a href="${s:mvcUrl('LC#detalhes').arg(0, livro.codigo).build()}">${livro.titulo}</a>
 		                  </h4>
 		                  <p class="card-text">Autor: ${livro.autor}</p>
 		                  <c:forEach items="${livro.preco}" var="preco">
@@ -64,9 +65,9 @@
 		                <div class="card-footer">
 		                  <!--<small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>-->
 		                  
-		                  <a href="${s:mvcUrl('LC#detalhes').arg(0, livro.codigo).build()}">
+		                  <form:form action="${s:mvcUrl('LC#detalhes').arg(0, livro.codigo).build()}" method="post"> 
 		                  	<button class="btn btn-primary">Comprar</button>
-		                  </a>
+		                  </form:form>
 		                  <!-- 
 		                  <form action="${s:mvcUrl('LC#detalhes').arg(0, livro.codigo).build()}" method="post">
 		                  	<button type="submit" class="btn btn-primary">Comprar</button> 

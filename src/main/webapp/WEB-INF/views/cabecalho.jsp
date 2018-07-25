@@ -32,7 +32,7 @@
           
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Carrinho()</a>
+              <a class="nav-link" href="${s:mvcUrl('CC#itens').build()}">Carrinho (${carrinho.quantidade})</a>
             </li>
             <security:authorize access="!isAuthenticated()">
 	            <li class="nav-item">

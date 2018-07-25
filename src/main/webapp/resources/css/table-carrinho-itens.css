@@ -1,0 +1,19 @@
+.table-carrinho{
+	text-align: center;
+}
+
+.table-input{
+	border-radius: 5px;
+	width: 25%;
+}
+
+.table-row{
+	border: none;
+}
+
+.atualizar-icon{
+	width: 20px;
+	height: 20px;
+	background: transparent no-repeat;
+	background-image: url("../images/refresh.png");
+}

@@ -7,7 +7,8 @@
   
 <tags:pageTemplate titulo="Cadastro">    
       
-	<div class="container" >
-		<h2 class="mt-5 mb-4">Cadastro realizado com sucesso!</h2>
+	<div class="container " >
+		<h2 class="mt-5 mb-4">Cadastro realizado!</h2>
+		<p>Agora você está pronto para adquirir qualquer produto em nosso site!</p>
 	</div>
 </tags:pageTemplate>		

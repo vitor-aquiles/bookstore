@@ -20,16 +20,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
+			.antMatchers("/livros/detalhes/**").permitAll()
 			.antMatchers("/livros/detalhes").permitAll()
 			.antMatchers("/livros/**").hasRole("ADMIN")
 			.antMatchers("/livros").hasRole("ADMIN")
-			.antMatchers("/home").permitAll()
+			.antMatchers("/carrinho/**").permitAll()
+			.antMatchers("/carrinho").permitAll()
+			.antMatchers("/**").permitAll()
+			.antMatchers("/").permitAll()
 			.antMatchers("/cadastrar").permitAll()
 			.antMatchers("/cadastrar/**").permitAll()
 			.antMatchers("/cadastroSucesso").permitAll()
 			.antMatchers("/userAdmin").permitAll()
 			.anyRequest().authenticated()
-			.and().formLogin().loginPage("/login").defaultSuccessUrl("/home").permitAll()
+			.and().formLogin().loginPage("/login").defaultSuccessUrl("/").permitAll()
 			.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");
 	}
 	

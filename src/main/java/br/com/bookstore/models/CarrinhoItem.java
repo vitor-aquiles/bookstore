@@ -1,6 +1,7 @@
 package br.com.bookstore.models;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class CarrinhoItem implements Serializable{
 	
@@ -10,14 +11,17 @@ public class CarrinhoItem implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Livro livro;
-	private Preco preco;
+	private Idioma idioma;
 	
-	public CarrinhoItem(Livro livro, Preco preco) {
-		super();
+	public CarrinhoItem(Livro livro, Idioma idioma) {
 		this.livro = livro;
-		this.preco = preco;
+		this.idioma = idioma;
 	}
-
+	
+	public BigDecimal getValor() {
+		return livro.precoPara(idioma);
+	}
+	
 	public Livro getLivro() {
 		return livro;
 	}
@@ -25,13 +29,13 @@ public class CarrinhoItem implements Serializable{
 	public void setLivro(Livro livro) {
 		this.livro = livro;
 	}
-
-	public Preco getPreco() {
-		return preco;
+	
+	public Idioma getIdioma() {
+		return idioma;
 	}
 
-	public void setPreco(Preco preco) {
-		this.preco = preco;
+	public void setIdioma(Idioma idioma) {
+		this.idioma = idioma;
 	}
 
 	@Override
@@ -39,7 +43,7 @@ public class CarrinhoItem implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((livro == null) ? 0 : livro.hashCode());
-		result = prime * result + ((preco == null) ? 0 : preco.hashCode());
+		result = prime * result + ((idioma == null) ? 0 : idioma.hashCode());
 		return result;
 	}
 
@@ -57,15 +61,17 @@ public class CarrinhoItem implements Serializable{
 				return false;
 		} else if (!livro.equals(other.livro))
 			return false;
-		if (preco == null) {
-			if (other.preco != null)
+		if (idioma == null) {
+			if (other.idioma != null)
 				return false;
-		} else if (!preco.equals(other.preco))
+		} else if (!idioma.equals(other.idioma))
 			return false;
 		return true;
 	}
 	
-	
+	public BigDecimal getValorTotalMesmoItem(int quantidade) {
+		return this.getValor().multiply(new BigDecimal(quantidade));
+	}
 	
 	
 

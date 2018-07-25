@@ -14,9 +14,10 @@ import br.com.bookstore.controller.HomeController;
 import br.com.bookstore.controller.LivrosController;
 import br.com.bookstore.dao.LivroDAO;
 import br.com.bookstore.dao.UsuarioDAO;
+import br.com.bookstore.models.Carrinho;
 
 @EnableWebMvc
-@ComponentScan(basePackageClasses= {HomeController.class, LivrosController.class, LivroDAO.class, UsuarioDAO.class})
+@ComponentScan(basePackageClasses= {HomeController.class, LivrosController.class, LivroDAO.class, UsuarioDAO.class, Carrinho.class})
 @EnableCaching
 public class AppWebConfiguration implements WebMvcConfigurer {
 
@@ -25,6 +26,7 @@ public class AppWebConfiguration implements WebMvcConfigurer {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
+		resolver.setExposedContextBeanNames("carrinho");
 		
 		return resolver;
 	}

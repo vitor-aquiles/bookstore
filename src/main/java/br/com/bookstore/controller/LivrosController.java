@@ -9,6 +9,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -59,8 +60,8 @@ public class LivrosController {
 		
 	}
 	
-	@RequestMapping("/editar")
-	public ModelAndView editar(Integer livroCodigo) {
+	@RequestMapping("/editar/{codigo}")
+	public ModelAndView editar(@PathVariable("codigo") Integer livroCodigo) {
 		ModelAndView mav = new ModelAndView("livros/editar");
 		Livro livro = livroDao.buscar(livroCodigo);
 		mav.addObject("livro", livro);
@@ -78,20 +79,19 @@ public class LivrosController {
 		return new ModelAndView("redirect:/livros");
 	}
 	
-	@RequestMapping("/detalhesAdmin")
-	public ModelAndView detalhesAdmin(Integer codigo) {
+	@RequestMapping("/detalhesAdmin/{codigo}")
+	public ModelAndView detalhesAdmin(@PathVariable("codigo") Integer codigo) {
 		ModelAndView mav = new ModelAndView("livros/detalhesAdmin");
 		Livro livro = livroDao.buscaCompleta(codigo);
 		mav.addObject(livro);
 		return mav;
 	}
 	
-	@RequestMapping("/detalhes")
-	public ModelAndView detalhes(Integer codigo) {
+	@RequestMapping("/detalhes/{codigo}")
+	public ModelAndView detalhes(@PathVariable("codigo") Integer codigo) {
 		ModelAndView mav = new ModelAndView("livros/detalhes");
 		Livro livro = livroDao.buscaCompleta(codigo);
 		mav.addObject(livro);
-		mav.addObject("idiomas", Idioma.values());
 		return mav;
 	}
 	

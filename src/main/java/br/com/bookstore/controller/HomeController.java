@@ -27,7 +27,7 @@ public class HomeController {
 	@Autowired
 	private UsuarioDAO usuarioDao;
 
-	@RequestMapping("/home")
+	@RequestMapping("/")
 	@Cacheable(value="livrosHome")
 	public ModelAndView livrosHome() {
 		ModelAndView mav = new ModelAndView("home");
