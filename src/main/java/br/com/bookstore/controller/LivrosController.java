@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.bookstore.dao.LivroDAO;
@@ -104,7 +105,11 @@ public class LivrosController {
 		return new ModelAndView("redirect:/livros");
 	}
 	
-	
+	@RequestMapping("/{codigo}")
+	@ResponseBody
+	public Livro detalhesJson(@PathVariable("codigo") Integer codigo) {
+		return livroDao.buscaCompleta(codigo);
+	}
 	
 	
 }
