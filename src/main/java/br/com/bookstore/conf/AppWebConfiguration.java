@@ -1,13 +1,19 @@
 package br.com.bookstore.conf;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.accept.ContentNegotiationManager;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import br.com.bookstore.controller.HomeController;
@@ -50,5 +56,18 @@ public class AppWebConfiguration implements WebMvcConfigurer {
 		return new ConcurrentMapCacheManager();
 	}
 	
+	@Bean
+	public ViewResolver contentNegotiationViewResolver(ContentNegotiationManager manager) {
+		List<ViewResolver> viewResolvers = new ArrayList<ViewResolver>();
+		viewResolvers.add(internalResourceViewResolver());
+		viewResolvers.add(new JSonViewResolver());
+		
+		ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
+		resolver.setViewResolvers(viewResolvers);
+		resolver.setContentNegotiationManager(manager);
+		
+		return resolver;
+		
+	}
 	
 }
