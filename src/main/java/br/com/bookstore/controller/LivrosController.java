@@ -66,10 +66,12 @@ public class LivrosController {
 		ModelAndView mav = new ModelAndView("livros/editar");
 		Livro livro = livroDao.buscar(livroCodigo);
 		mav.addObject("livro", livro);
+		mav.addObject("idiomas", Idioma.values());
 		return mav;
 	}
 	
 	@RequestMapping("/editar/atualizar")
+	@CacheEvict(cacheNames= {"livrosHome", "listaLivros"}, allEntries=true)
 	public ModelAndView atualizar(@Valid Livro livro, BindingResult result, RedirectAttributes redirectAttributes) {
 			
 		if(result.hasErrors()) {

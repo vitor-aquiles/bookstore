@@ -55,17 +55,16 @@
 					<form:errors path="autor"/>
 				</div>
 			</div>
-			
 			<div class="form-group row">
-				<c:forEach items="${livro.preco}" var="preco" varStatus="status">
-					<label class="col-sm-2 col-form-label">Preço ${preço.idioma}:</label>
+				<c:forEach items="${idiomas}" var="idioma" varStatus="status">
+					<label class="col-sm-2 col-form-label">Preço ${idioma}:</label>
 					<div class="col-sm-4">
 						<form:input value="${preco.valor}" path="preco[${status.index}].valor" class="form-control"/>
+						<form:hidden value="${idioma}" path="preco[${status.index}].idioma" class="form-control"/>
 						<form:errors path="preco"/>
 					</div>
 				</c:forEach>
 			</div>
-			
 			
 			<div class="form-group row">
 				<div class="col-sm-10 mb-4">	
