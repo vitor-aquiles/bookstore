@@ -14,7 +14,8 @@
 	 <!-- Page Content -->
     <div class="container">
       <h1 class="mt-5 mb-4">Livros</h1>
-    
+    	<h3>${msgCadastro}</h3>
+		<h3>${msgAtualiza}</h3>
 
 		<!-- class="table-carrinho" somente para text-align -->
 		<table class="table table-hover table-carrinho">
@@ -51,6 +52,6 @@
 					</td> 
 				</tr>
 			</c:forEach>
-		</table>	
+		</table>
 	</div>
 </tags:pageTemplate>

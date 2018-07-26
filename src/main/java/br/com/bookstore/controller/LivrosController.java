@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.bookstore.dao.LivroDAO;
 import br.com.bookstore.models.Idioma;
@@ -36,7 +37,7 @@ public class LivrosController {
 	//@RequestMapping("/gravar")
 	@RequestMapping(method=RequestMethod.POST)
 	@CacheEvict(cacheNames= {"livrosHome", "listaLivros"}, allEntries=true)
-	public ModelAndView gravar(@Valid Livro livro, BindingResult result) {
+	public ModelAndView gravar(@Valid Livro livro, BindingResult result, RedirectAttributes redirectAttributes) {
 		Livro livroCadastrado = livroDao.buscar(livro.getCodigo());
 		
 		if(result.hasErrors() || !(livroCadastrado==null)) {
@@ -44,7 +45,7 @@ public class LivrosController {
 		}
 		
 		livroDao.gravar(livro);
-		
+		redirectAttributes.addFlashAttribute("msgCadastro", "Livro cadastrado com sucesso!");
 		return new ModelAndView("redirect:/livros");
 	}
 	
@@ -69,13 +70,14 @@ public class LivrosController {
 	}
 	
 	@RequestMapping("/editar/atualizar")
-	public ModelAndView atualizar(@Valid Livro livro, BindingResult result) {
+	public ModelAndView atualizar(@Valid Livro livro, BindingResult result, RedirectAttributes redirectAttributes) {
 			
 		if(result.hasErrors()) {
 			return editar(livro.getCodigo());
 		}
 		
 		livroDao.atualizar(livro);
+		redirectAttributes.addFlashAttribute("msgAtualiza", "Livro atualizado com sucesso!");
 		return new ModelAndView("redirect:/livros");
 	}
 	
