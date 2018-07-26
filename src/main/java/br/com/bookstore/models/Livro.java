@@ -13,6 +13,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class Livro {
@@ -34,6 +35,7 @@ public class Livro {
 	private String genero;
 	
 	@NotBlank(message="'Data de publicação' é obrigatório")
+	@Pattern(regexp="(\\d{2}\\/\\d{4})", message="Informe a data no formato MM/aaaa")
 	private String dataPublicacao;
 
 	@NotBlank(message="'Autor' é obrigatório")

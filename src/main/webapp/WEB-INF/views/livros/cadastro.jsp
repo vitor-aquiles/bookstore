@@ -51,7 +51,7 @@
 				</div>
 				<label class="col-sm-2 col-form-label font-weight-bold">Data Publicação:</label>
 				<div class="col-sm-4">	
-					<form:input path="dataPublicacao" class="form-control" required="true"/>
+					<form:input path="dataPublicacao" class="form-control" pattern="\d{2}\/\d{4}" required="true" placeholder="Ex: 05/2013"/>
 					<div class="font-italic small">
 						<form:errors path="dataPublicacao"/>
 					</div> 
@@ -70,7 +70,7 @@
 				<c:forEach items="${idiomas}" var="idioma" varStatus="status">
 					<label class="col-sm-2 col-form-label font-weight-bold">Preço ${idioma}:</label>
 					<div class="col-sm-4">	
-						<form:input path="preco[${status.index}].valor" class="form-control" onkeypress="return isDecimalNumber(event)" pattern="[0-9]+([\.,][0-9]+)?" step=".01" placeholder="Ex: 50, 89.90" required="true"/>
+						<form:input path="preco[${status.index}].valor" class="form-control" onkeypress="return isDecimalNumber(event)" pattern="^\d*(\.\d{0,2})?$" placeholder="Ex: 50, 89.90" required="true"/>
 						<form:hidden value="${idioma}" path="preco[${status.index}].idioma" class="form-control"/>
 						<div class="font-italic small">
 							<form:errors path="preco[${status.index}].valor"/>
