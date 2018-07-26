@@ -16,7 +16,7 @@ public class Preco {
 	private Idioma idioma;
 	
 	@NotNull(message="Preço é obrigatório")
-	@Digits(integer=3, fraction=2, message="Insira no máx centenas e 2 casas decimais")
+	@Digits(integer=3, fraction=2, message="Insira no máx centenas e 2 casas decimais (Ex: 10, 10.75")
 	@Min(value=1, message="Insira um preço válido")
 	private BigDecimal valor;
 	

@@ -14,7 +14,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label font-weight-bold">Código:</label>
 				<div class="col-sm-4">	
-					<form:input path="codigo" class="form-control"/>
+					<form:input path="codigo" class="form-control" onkeypress="return isIntNumber(event)" required="true"/>
 					<div class="font-italic small"> 
 						<form:errors path="codigo"/>
 					</div> 
@@ -23,7 +23,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label font-weight-bold">Título:</label>
 				<div class="col-sm-10">	
-					<form:input path="titulo" class="form-control"/>
+					<form:input path="titulo" required="true" class="form-control"/>
 					<div class="font-italic small">
 						<form:errors path="titulo"/>
 					</div> 
@@ -33,7 +33,7 @@
 				<c:forEach items="${idiomas}" var="idioma" varStatus="status">
 					<label class="col-sm-2 col-form-label font-weight-bold">Páginas ${idioma}:</label>
 					<div class="col-sm-4">	
-						<form:input min="1" path="paginas[${status.index}].quantidade"  class="form-control"/>
+						<form:input min="1" path="paginas[${status.index}].quantidade"  class="form-control" onkeypress="return isIntNumber(event)" required="true"/>
 						<form:hidden value="${idioma}" path="paginas[${status.index}].idioma" class="form-control"/>
 						<div class="font-italic small">
 							<form:errors path="paginas[${status.index}].quantidade"/>
@@ -44,14 +44,14 @@
 			<div class="form-group row">	
 				<label class="col-sm-2 col-form-label font-weight-bold">Gênero:</label>
 				<div class="col-sm-4">	
-					<form:input path="genero" class="form-control"/>
+					<form:input path="genero" class="form-control" required="true"/>
 					<div class="font-italic small">
 						<form:errors path="genero"/>
 					</div> 
 				</div>
 				<label class="col-sm-2 col-form-label font-weight-bold">Data Publicação:</label>
 				<div class="col-sm-4">	
-					<form:input path="dataPublicacao" class="form-control"/>
+					<form:input path="dataPublicacao" class="form-control" required="true"/>
 					<div class="font-italic small">
 						<form:errors path="dataPublicacao"/>
 					</div> 
@@ -60,7 +60,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label font-weight-bold">Autor:</label>
 				<div class="col-sm-10">	
-					<form:input path="autor" class="form-control"/>
+					<form:input path="autor" class="form-control" required="true"/>
 					<div class="font-italic small">
 						<form:errors path="autor"/>
 					</div> 
@@ -70,7 +70,7 @@
 				<c:forEach items="${idiomas}" var="idioma" varStatus="status">
 					<label class="col-sm-2 col-form-label font-weight-bold">Preço ${idioma}:</label>
 					<div class="col-sm-4">	
-						<form:input path="preco[${status.index}].valor" class="form-control"/>
+						<form:input path="preco[${status.index}].valor" class="form-control" onkeypress="return isDecimalNumber(event)" pattern="[0-9]+([\.,][0-9]+)?" step=".01" placeholder="Ex: 50, 89.90" required="true"/>
 						<form:hidden value="${idioma}" path="preco[${status.index}].idioma" class="form-control"/>
 						<div class="font-italic small">
 							<form:errors path="preco[${status.index}].valor"/>

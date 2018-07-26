@@ -30,7 +30,8 @@
 	
 	<script src="${jsPath}/jquery-3.3.1.min.js"></script>
 	<script src="${jsPath}/bootstrap.bundle.min.js"></script>
-	<script src="${jsPath}/detalhes-radio-checked.js"></script>
+	<script src="${jsPath}/bookstore-rel-compra.js"></script>
+	<script src="${jsPath}/bookstore-rel-cadastro.js"></script>
 	
 </head>
 
