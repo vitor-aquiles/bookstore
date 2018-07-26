@@ -14,7 +14,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Código:</label>
 				<div class="col-sm-4">	
-					<form:input path="codigo" class="form-control"/>
+					<form:input path="codigo" class="form-control" required="true"/>
 					<form:errors path="codigo"/>
 				</div>
 			</div>
@@ -30,7 +30,7 @@
 				<c:forEach items="${livro.paginas}" var="paginas" varStatus="status">
 					<label class="col-sm-2 col-form-label">Páginas ${paginas.idioma}:</label>
 					<div class="col-sm-4">
-						<form:input value="${paginas.quantidade}" path="paginas[${status.index}].quantidade" class="form-control"/>
+						<form:input value="${paginas.quantidade}" path="paginas[${status.index}].quantidade" class="form-control" required="true"/>
 						<form:errors path="paginas"/>
 					</div>
 				</c:forEach>
@@ -39,19 +39,19 @@
 			<div class="form-group row">	
 				<label class="col-sm-2 col-form-label">Gênero:</label>
 				<div class="col-sm-4">	
-					<form:input path="genero" class="form-control"/>
+					<form:input path="genero" class="form-control" required="true"/>
 					<form:errors path="genero"/>
 				</div>
 				<label class="col-sm-2 col-form-label">Data Publicação:</label>
 				<div class="col-sm-4">	
-					<form:input path="dataPublicacao" class="form-control"/>
+					<form:input path="dataPublicacao" class="form-control" required="true"/>
 					<form:errors path="dataPublicacao"/>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Autor:</label>
 				<div class="col-sm-10">	
-					<form:input path="autor" class="form-control"/>
+					<form:input path="autor" class="form-control" required="true"/>
 					<form:errors path="autor"/>
 				</div>
 			</div>
@@ -59,7 +59,7 @@
 				<c:forEach items="${idiomas}" var="idioma" varStatus="status">
 					<label class="col-sm-2 col-form-label">Preço ${idioma}:</label>
 					<div class="col-sm-4">
-						<form:input value="${preco.valor}" path="preco[${status.index}].valor" class="form-control"/>
+						<form:input value="${preco.valor}" path="preco[${status.index}].valor" class="form-control" required="true"/>
 						<form:hidden value="${idioma}" path="preco[${status.index}].idioma" class="form-control"/>
 						<form:errors path="preco"/>
 					</div>
