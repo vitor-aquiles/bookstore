@@ -21,15 +21,14 @@
 	<c:url value="/resources/images" var="imagesPath" />
 	<c:url value="/resources/js" var="jsPath"/>
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="${cssPath}/bootstrap.min.css" />
+    <link rel="stylesheet" href="${cssPath}/bootstrap/bootstrap.min.css" />
 
-    <!-- Custom styles for this template -->
     <link href="${cssPath}/logo-nav.css" rel="stylesheet">
     <link href="${cssPath}/sticky-footer.css" rel="stylesheet">
     <link href="${cssPath}/table-carrinho-itens.css" rel="stylesheet">
 	
-	<script src="${jsPath}/jquery-3.3.1.min.js"></script>
-	<script src="${jsPath}/bootstrap.bundle.min.js"></script>
+	<script src="${jsPath}/bootstrap/jquery-3.3.1.min.js"></script>
+	<script src="${jsPath}/bootstrap/bootstrap.bundle.min.js"></script>
 	<script src="${jsPath}/bookstore-rel-compra.js"></script>
 	<script src="${jsPath}/bookstore-rel-cadastro.js"></script>
 	
