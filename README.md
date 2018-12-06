@@ -12,3 +12,4 @@ service REST para retorno de dados do formato JSON.
 * Views atráves de JSP
 * Banco de dados MySql
 * Gerenciamento de cache fornecido pelo Spring Framework
+* Gerenciamento de dependências com Maven
