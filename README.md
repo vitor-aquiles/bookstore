@@ -8,7 +8,7 @@ service REST para retorno de dados do formato JSON.
 * Projeto criado em Java
 * Implementação da JPA com Hibernate
 * Spring MVC
-* Autenticação e validação com Sring Security
+* Autenticação e autorização com Sring Security
 * Views atráves de JSP
 * Banco de dados MySql
 * Gerenciamento de cache fornecido pelo Spring Framework
